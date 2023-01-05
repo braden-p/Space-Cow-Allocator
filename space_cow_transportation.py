@@ -1,6 +1,7 @@
 from partition import get_partitions
 import time
 
+# FUNCTIONS
 
 def load_cows(filename):
     """
@@ -211,11 +212,7 @@ def compare_cow_transport_algorithms():
     print('')
     print('greedy algorithm is',bruteTime-greedyTime,'seconds faster than brute force algorithm')
 
+# PROGRAM
 cows = load_cows("cow_data.txt")
-limit=100
-print(cows)
-
-print(greedy_cow_transport(cows, limit))
-print(brute_force_cow_transport(cows, limit))
-
-
+limit=10
+compare_cow_transport_algorithms()
