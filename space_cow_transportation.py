@@ -125,8 +125,55 @@ def brute_force_cow_transport(cows,limit=10):
     transported on a particular trip and the overall list containing all the
     trips
     """
-    # TODO: Your code here
-    pass
+    def get_subListWeight(subList):
+        '''
+        accepts a subList and returns its weight
+        '''
+        subListWeight = 0
+        for subItem in subList:
+            subListWeight += cows[subItem]
+        return subListWeight
+    
+    cowsList = list(cows.keys())
+    masterTrip = []
+    goodTrip = []
+    partitionCounter = 0
+    for partition in (get_partitions(cowsList)): 
+        if len(goodTrip) == 0: # if no goodTrip has been found, find one
+            partitionCounter += 1
+            subListCounter = 0
+            toShip = []
+            subListWeight = 0
+            for subList in partition:
+                subListCounter += 1
+                subListWeight = get_subListWeight(subList)
+                if subListWeight > limit:
+                    break
+                else:
+                    toShip.append(subList)
+                    if len(partition) == subListCounter:
+                        for load in toShip:    
+                            goodTrip.append(load)
+        else: # if a goodTrip has been found, compare current partition to goodTrip
+            if len(partition) < len(goodTrip):
+                partitionCounter += 1
+                subListCounter = 0
+                toShip = []
+                subListWeight = 0
+                for subList in partition:
+                    subListCounter += 1
+                    subListWeight = get_subListWeight(subList)
+                    if subListWeight > limit:
+                        break
+                    else:
+                        toShip.append(subList)
+                        if len(partition) == subListCounter:
+                            goodTrip = []
+                            for load in toShip:    
+                                goodTrip.append(load)
+    for load in goodTrip:    
+        masterTrip.append(load)
+    return masterTrip
 
         
 def compare_cow_transport_algorithms():
