@@ -189,9 +189,27 @@ def compare_cow_transport_algorithms():
     Returns:
     Does not return anything.
     """
-    # TODO: Your code here
-    pass
-
+    print('Running greedy algorithm...')
+    print("greedy algorithm's solution:")
+    start = time.time()
+    greedy_cow_transport(cows, limit)
+    end = time.time()
+    greedyTime = end - start
+    print(greedy_cow_transport(cows, limit))
+    print('Number of trips using greedy algorithm:',len(greedy_cow_transport(cows, limit)))
+    print('Time to complete greedy algorithm in seconds:', greedyTime)
+    print('')
+    print('Running brute force algorithm...')
+    print("brute force algorithm's solution:")
+    start = time.time()
+    brute_force_cow_transport(cows, limit)
+    end = time.time()
+    bruteTime = end - start
+    print(brute_force_cow_transport(cows, limit))
+    print('Number of trips using brute force algorithm:',len(brute_force_cow_transport(cows, limit)))
+    print('Time to complete brute force algorithm in seconds:', bruteTime)
+    print('')
+    print('greedy algorithm is',bruteTime-greedyTime,'seconds faster than brute force algorithm')
 
 cows = load_cows("cow_data.txt")
 limit=100
