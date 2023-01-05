@@ -1,5 +1,5 @@
 """
-Cow Allocator
+Space Cow Allocator
 Created by Braden Piper, bradenpiper.com
 Created on Wed Jan 4, 2023
 Version = 1.1
