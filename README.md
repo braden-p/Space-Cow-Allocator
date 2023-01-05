@@ -20,9 +20,12 @@ have developed breeding technology to make cows with only integer weights.
 
 The data for the cows to be transported is stored in cow_data.txt.
 
-You can expect the data to be formatted in pairs of x,y on each line, where x 
-is the name of the cow and y is a number indicating how much the cow weighs in
-tons, and that all of the cows have unique names.
+The cow data is formatted in pairs of x,y on each line, where x is the name
+of the cow and y is a number indicating how much the cow weighs in tons. Each
+cow has a unique name.
+
+partition.py contains some helper code to be used with the brute force algorithm
+that will fetch all of the available partitions.
 ---
 ##### NOTE:
 This program was completed as part of the course MITx 6.00.2x - Introduction
