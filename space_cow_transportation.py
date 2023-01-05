@@ -47,8 +47,62 @@ def greedy_cow_transport(cows,limit=10):
     transported on a particular trip and the overall list containing all the
     trips
     """
-    # TODO: Your code here
-    pass
+    cowsList = list(cows.keys())
+    weightsList = list(cows.values())
+    availWeight = limit
+
+    def findCow(cowsList,index):
+        ''' 
+        Looks up the heaviest cow that will fit on the current trip
+        returns a string, the name of the heaviest cow that will fit
+        '''
+        return (cowsList[index])
+        
+    def findIndex(cowsList,weightsList,availWeight):
+        ''' 
+        Finds the index of the heaviest cow that will fit on the current trip
+        Returns an int, the index of the cow and its corresponding weight in their lists
+        '''
+        targetWeight = availWeight
+        while targetWeight > 0:
+            for weight in weightsList:
+                if weight == targetWeight:
+                    index = weightsList.index(weight)
+                    return index
+            targetWeight -= 1
+        
+    def willAnyFit(weightsList,availWeight):
+        ''' 
+        Checks if any of the available cows will fit on the current trip
+        returns a boolean, true if a cow will fit false if none will fit
+        '''
+        willFit = True
+        if len(weightsList) == 0:
+            return False
+        if min(weightsList) > availWeight:
+            willFit = False
+        return willFit
+    
+    def removeCow(cowsList, weightsList, index):
+        ''' 
+        Removes the cow and its correponding weight from the cowsList and weightsList
+        '''
+        del cowsList[index]
+        del weightsList[index]
+         
+    masterTrips = []
+    while len(cowsList) > 0:
+        currentTrip = []
+        # Fill current trip
+        while willAnyFit(weightsList,availWeight):
+            index = findIndex(cowsList,weightsList,availWeight)
+            currentTrip.append(findCow(cowsList,index))
+            availWeight -= weightsList[index]
+            removeCow(cowsList, weightsList, index)
+        # if trip full, append current trip to masterTrips
+        masterTrips.append(currentTrip)  
+        availWeight = limit
+    return masterTrips
 
 
 def brute_force_cow_transport(cows,limit=10):
