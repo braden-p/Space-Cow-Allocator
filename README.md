@@ -35,6 +35,7 @@ of the functions were provided materials. The majority of the implementation is
 my own work.
 The provided functions include:
 - `load_cows()`
+
 The following function names were provided with docstrings, but the implementations
 are my own work:
 - `greedy_cow_transport()`
