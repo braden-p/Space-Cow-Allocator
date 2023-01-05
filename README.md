@@ -26,6 +26,7 @@ cow has a unique name.
 
 partition.py contains some helper code to be used with the brute force algorithm
 that will fetch all of the available partitions.
+
 ---
 ##### NOTE:
 This program was completed as part of the course MITx 6.00.2x - Introduction
